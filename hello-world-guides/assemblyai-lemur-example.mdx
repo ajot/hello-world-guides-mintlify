@@ -1,0 +1,97 @@
+---
+title: 'Transcribe Audio and Ask Questions Using the AssemblyAI Lemur Model'
+description: 'Transcribe an audio file and ask questions using the AssemblyAI Lemur model'
+icon: 'microphone'
+sidebarTitle: "AssemblyAI Lemur Example"
+---
+
+<Info>
+  **Prerequisite** You should have an API key from AssemblyAI and have it stored in a .env file.
+</Info>
+
+## Introduction
+
+This guide demonstrates how to transcribe an audio file and ask questions using the AssemblyAI Lemur model. You'll learn how to set up your environment, configure your API key, transcribe an audio file, and ask questions on the transcript.
+
+## Setup
+
+### Step 1: Install Required Packages
+
+First, install the necessary packages using pip:
+
+```sh
+pip install python-dotenv assemblyai
+```
+
+### Step 2: Create a .env File
+
+Create a `.env` file in the project root with your AssemblyAI API key:
+
+```plaintext
+ASSEMBLYAI_API_KEY=your_assemblyai_api_key
+```
+
+## Transcribing an Audio File and Asking Questions
+
+### Step 3: Create the Python Script
+
+Create a Python script named `assemblyai-lemur-example.py` with the following content:
+
+```python assemblyai-lemur-example.py
+import os
+from dotenv import load_dotenv
+import assemblyai as aai
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get AssemblyAI API key from environment variables
+aai.settings.api_key = os.getenv('ASSEMBLYAI_API_KEY')
+
+# Initialize a Transcriber object to handle transcription tasks
+transcriber = aai.Transcriber()
+
+# To transcribe a new audio file, uncomment the next line and provide the file URL
+# transcript = transcriber.transcribe("https://example.org/customer.mp3")
+
+# If you already have a transcript ID, you can retrieve the transcript directly
+# Replace the ID with your actual transcript ID
+transcript = aai.Transcript.get_by_id("6frp2s8rav-72b6-4b3a-8605-60c5ef112ef8")
+print(transcript)  # Print the transcript to verify its content
+
+# Define a list of questions to ask on the transcript using the Lemur model
+questions = [
+    aai.LemurQuestion(
+        question="What kind of equipment does Cassidy use?",
+        answer_format="Provide a Summary in a paragraph format."
+    ),
+    aai.LemurQuestion(
+        question="Who are the speakers?",
+        answer_format="Short sentence"
+    ),
+    aai.LemurQuestion(
+        question="Are there any recommendations or tips for people getting started with live streaming and handling fears and jitters?",
+        answer_format="Bullet list"
+    )
+]
+
+# Use the Lemur model to ask the defined questions on the transcript
+result = transcript.lemur.question(questions)
+
+# Loop through each question and its corresponding answer, and print them
+for q in result.response:
+    print(f"Question: {q.question}")
+    print(f"Answer: {q.answer}")
+```
+
+### Step 4: Run the Script
+
+Ensure you have the `.env` file in the same directory as the script. Then, execute the script:
+
+```sh
+python assemblyai-lemur-example.py
+```
+
+## Conclusion
+
+You have successfully transcribed an audio file and asked questions using the AssemblyAI Lemur model! This guide provided a basic example to get you started. You can now expand on this by customizing the questions and handling different types of audio content.

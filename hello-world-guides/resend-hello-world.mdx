@@ -1,0 +1,59 @@
+---
+title: 'Send an Email Using the Resend API'
+description: 'Send a basic email using the Resend API'
+icon: "envelope"
+sidebarTitle: "Resend Email Example"
+---
+import ResendExampleSnippet from '/snippets/resend-example-snippet.mdx';
+
+<Info>
+  **Prerequisite** You should have an API key from Resend and have it stored in a .env file.
+</Info>
+
+## Introduction
+
+This guide demonstrates how to send a basic email using the Resend API. You'll learn how to set up your environment, configure your API key, and send an email.
+
+<Accordion title="Show me the code" icon="code">
+    <ResendExampleSnippet/>
+</Accordion>
+
+## Setup
+
+### Step 1: Install Required Packages
+
+First, install the necessary packages using pip:
+
+```sh
+pip install python-dotenv resend
+```
+
+### Step 2: Create a .env File
+
+Create a `.env` file in the project root with your Resend API key and email details:
+
+```plaintext
+RESEND_API_KEY=your_resend_api_key
+RESEND_EMAIL_FROM=your_email_from_address
+RESEND_EMAIL_TO=recipient_email_address
+```
+
+## Sending an Email
+
+### Step 3: Create the Python Script
+
+Create a Python script named `resend-email-example.py` with the following content:
+
+<ResendExampleSnippet/>
+
+### Step 4: Run the Script
+
+Ensure you have the `.env` file in the same directory as the script. Then, execute the script:
+
+```sh
+python resend-email-example.py
+```
+
+## Conclusion
+
+You have successfully sent an email using the Resend API! This guide provided a basic example to get you started. You can now expand on this by customizing the email content and handling different email sending scenarios.

@@ -1,0 +1,91 @@
+---
+title: 'OpenAI API Hello World'
+description: 'Fetch Company Information Using the OpenAI API'
+icon: 'microchip-ai'
+sidebarTitle: "OpenAI Company Info"
+---
+
+<Info>
+  **Prerequisite** You should have an API key from OpenAI and have it stored in a .env file.
+</Info>
+
+## Introduction
+
+This guide demonstrates how to fetch and log company information using the OpenAI API. You'll learn how to set up your environment, configure your API key, and make a request to the OpenAI API.
+
+## Setup
+
+### Step 1: Install Required Packages
+
+First, install the necessary packages using pip:
+
+```sh
+pip install python-dotenv openai
+```
+
+### Step 2: Create a .env File
+
+Create a `.env` file in the project root with your OpenAI API key:
+
+```plaintext
+OPENAI_API_KEY=your_openai_api_key
+```
+
+## Fetching Company Information
+
+### Step 3: Create the Python Script
+
+Create a Python script named `openai-hello-world.py` with the following content:
+
+```python openai-hello-world.py
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+from logging_config import setup_logging
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Set up logging
+logger = setup_logging()
+
+# Get OpenAI API key from environment variables
+openai_api_key = os.getenv('OPENAI_API_KEY')
+
+# Initialize OpenAI client with API key
+client = OpenAI(api_key=openai_api_key)
+
+# Define the company name to get information for
+company_name = "Twilio"
+
+# Request completion from the OpenAI API
+completion = client.chat.completions.create(
+    model="gpt-4-turbo",
+    messages=[
+        {"role": "system", "content": "Only return the information asked for. No preamble, and no conclusion. Only return CSV format."},
+        {"role": "user", "content": (
+            f"Return the details for the company in JSON format including founding date, status "
+            f"(series a, b funding etc., IPO etc.), a brief description of what {company_name} does, "
+            f"and its category in JSON format. Use these keys - company, year, description, stage, category"
+        )}
+    ]
+)
+
+# Log the raw completion response
+logger.info("Raw completion response: %s", completion)
+
+# Log the content of the first choice's message
+logger.info("Content of the first choice's message: %s", completion.choices[0].message.content)
+```
+
+### Step 4: Run the Script
+
+Ensure you have the `.env` file in the same directory as the script. Then, execute the script:
+
+```sh
+python openai-hello-world.py
+```
+
+## Conclusion
+
+You have successfully fetched and logged company information using the OpenAI API! This guide provided a basic example to get you started. You can now expand on this by customizing the request and handling different types of information.

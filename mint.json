@@ -1,9 +1,9 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Curious Mints",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/curious-mints-logo.png",
+    "light": "/logo/curious-mints-logo.png"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -17,8 +17,8 @@
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "Curious Mints Blog",
+      "url": "https://curiousmints.com"
     }
   ],
   "topbarCtaButton": {
@@ -31,41 +31,27 @@
       "url": "api-reference"
     }
   ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
   "navigation": [
     {
       "group": "Get Started",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "quick-start"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Hello World Guides",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "hello-world-guides/resend-hello-world",
+        "hello-world-guides/assemblyai-transcription-example",
+        "hello-world-guides/assemblyai-lemur-example",
+        "hello-world-guides/openai-hello-world",
+        "hello-world-guides/twilio-sms"
+      ]
+    },
+    {
+      "group": "Misc",
+      "pages": [
+        "roadmap"
       ]
     },
     {
@@ -84,8 +70,8 @@
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "x": "https://x.com/amit",
+    "github": "https://github.com/ajot",
+    "linkedin": "https://www.linkedin.com/in/ajotwani/"
   }
 }

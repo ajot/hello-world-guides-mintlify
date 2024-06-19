@@ -1,0 +1,84 @@
+---
+title: 'Twilio SMS Hello World'
+description: 'Send a Text Message Using the Twilio API"'
+icon: 'comment-sms'
+sidebarTitle: "Twilio SMS Example"
+---
+
+<Info>
+  **Prerequisite** You should have an API key from Twilio and have it stored in a .env file.
+</Info>
+
+## Introduction
+
+This guide demonstrates how to send a basic text message using the Twilio API. You'll learn how to set up your environment, configure your API credentials, and send a text message.
+
+## Setup
+
+### Step 1: Install Required Packages
+
+First, install the necessary packages using pip:
+
+```sh
+pip install python-dotenv twilio
+```
+
+### Step 2: Create a .env File
+
+Create a `.env` file in the project root with your Twilio credentials and phone numbers:
+
+```plaintext
+TWILIO_ACCOUNT_SID=your_twilio_account_sid
+TWILIO_AUTH_TOKEN=your_twilio_auth_token
+TWILIO_PHONE_FROM=your_twilio_phone_number
+TWILIO_PHONE_TO=recipient_phone_number
+```
+
+## Sending a Text Message
+
+### Step 3: Create the Python Script
+
+Create a Python script named `twilio-sms-example.py` with the following content:
+
+```python twilio-sms-example.py
+import os
+from dotenv import load_dotenv
+from twilio.rest import Client
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get Twilio credentials and phone numbers from environment variables
+account_sid = os.getenv('TWILIO_ACCOUNT_SID')
+auth_token = os.getenv('TWILIO_AUTH_TOKEN')
+phone_from = os.getenv('TWILIO_PHONE_FROM')
+phone_to = os.getenv('TWILIO_PHONE_TO')
+
+# Initialize Twilio client with account SID and auth token
+client = Client(account_sid, auth_token)
+
+try:
+    # Send a text message using Twilio API
+    message = client.messages.create(
+        body="Hello, World!",
+        from_=phone_from,
+        to=phone_to
+    )
+    # Print success response
+    print(f"Message sent to {phone_to}. SID: {message.sid}")
+except Exception as e:
+    # Print error response
+    print(f"Failed to send message. Error: {e}")
+```
+
+### Step 4: Run the Script
+
+Ensure you have the `.env` file in the same directory as the script. Then, execute the script:
+
+```sh
+python twilio-sms-example.py
+```
+
+## Conclusion
+
+You have successfully sent a text message using the Twilio API! This guide provided a basic example to get you started. You can now expand on this by customizing the message content and handling different phone numbers.

@@ -1,0 +1,31 @@
+```python resend-email-example.py
+import os
+from dotenv import load_dotenv
+import resend
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get API key and email details from environment variables
+resend.api_key = os.getenv('RESEND_API_KEY')
+email_from = os.getenv('RESEND_EMAIL_FROM')
+email_to = os.getenv('RESEND_EMAIL_TO')
+
+# Define email content
+subject = "Hello World"
+email_body = "<strong>It works!</strong>"
+
+try:
+    # Send the email using Resend API
+    response = resend.Emails.send({
+        "from": email_from,
+        "to": email_to,
+        "subject": subject,
+        "html": email_body
+    })
+    # Print success response
+    print(f"Email sent to {email_to}. Response: {response}")
+except Exception as e:
+    # Print error response
+    print(f"Failed to send email. Error: {e}")
+```

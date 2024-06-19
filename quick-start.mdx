@@ -1,0 +1,100 @@
+---
+title: 'Curious Mints Hello World Field Guide'
+description: 'A Curated Collection of Quick Start Guides for Developers'
+icon: 'house'
+sidebarTitle: 'Quick Start'
+---
+## Preface
+
+I’ve spent several years playing around with these APIs and building hacks all over. This is a Python guide that includes things I have used over and over several times. It is not a comprehensive guide. It is not a reference guide that includes everything about the API. But it promises one thing—you will get started and make that "Hello World" quickly. The goal is to reduce your time to "Hello World" drastically. This is how I think all "Hello World" guides should be designed. If I could, I would go add a page that says "Hello World" to each of these APIs and include these guides in there.
+
+## Audience
+
+This field guide is designed for:
+- **Freelance Developers**: Independent contractors who need to quickly integrate APIs into their projects.
+- **Tech-Savvy Entrepreneurs**: Small business owners who handle various technical tasks and want to streamline operations.
+- **Junior Developers and Interns**: Aspiring professionals looking to gain practical experience with API integrations.
+- **Tinkerers and Hobbyists**: Individuals who enjoy experimenting with automation and coding projects.
+
+## Getting Started
+
+### Prerequisites
+
+Before diving into the guides, ensure you have the following prerequisites:
+
+1. **API Keys**: You should have API keys for the APIs you intend to use. Each guide will assume you have already obtained these keys and stored them in a `.env` file.
+2. **Python**: Make sure you have Python installed on your machine. These examples are written in Python and require Python 3.6 or higher.
+3. **Packages**: You will need to install some Python packages. Each guide will specify the required packages and how to install them.
+
+### Setting Up Your Environment
+
+#### Step 1: Clone the Repository
+
+First, clone the repository to your local machine:
+
+```sh
+git clone https://github.com/yourusername/api-hello-world-examples.git
+cd api-hello-world-examples
+```
+
+#### Step 2: Install Required Packages
+
+Each guide will list the packages you need to install. Generally, you can use pip to install these packages. For example:
+
+```sh
+pip install python-dotenv openai resend twilio assemblyai
+```
+
+#### Step 3: Create a .env File
+
+Create a `.env` file in the project root to store your API keys and other environment variables. Here is an example of what your `.env` file might look like:
+
+```plaintext
+OPENAI_API_KEY=your_openai_api_key
+RESEND_API_KEY=your_resend_api_key
+RESEND_EMAIL_FROM=your_email_from_address
+RESEND_EMAIL_TO=recipient_email_address
+TWILIO_ACCOUNT_SID=your_twilio_account_sid
+TWILIO_AUTH_TOKEN=your_twilio_auth_token
+TWILIO_PHONE_FROM=your_twilio_phone_number
+TWILIO_PHONE_TO=recipient_phone_number
+ASSEMBLYAI_API_KEY=your_assemblyai_api_key
+```
+
+### Running the Examples
+
+#### Example Guides
+
+We have prepared several guides to help you get started:
+
+1. **Send an Email Using the Resend API**:
+   - Learn how to send a basic email using the Resend API.
+   - [Read the guide](./resend-email-example)
+
+2. **Transcribe Audio Using the AssemblyAI API**:
+   - Learn how to transcribe an audio file using the AssemblyAI API.
+   - [Read the guide](./assemblyai-transcription)
+
+3. **Send a Text Message Using the Twilio API**:
+   - Learn how to send a basic text message using the Twilio API.
+   - [Read the guide](./twilio-sms-example)
+
+4. **Fetch Company Information Using the OpenAI API**:
+   - Learn how to fetch and log company information using the OpenAI API.
+   - [Read the guide](./openai-hello-world)
+
+5. **Transcribe Audio and Ask Questions Using the AssemblyAI Lemur Model**:
+   - Learn how to transcribe an audio file and ask questions using the AssemblyAI Lemur model.
+   - [Read the guide](./assemblyai-lemur-example)
+
+#### Running a Script
+
+To run any of the provided scripts, ensure your `.env` file is in the same directory as the script, and then execute the script using Python. For example:
+
+```sh
+python resend-email-example.py
+```
+
+## Conclusion
+
+These guides are designed to help you quickly get started with various APIs. By following the instructions and examples, you will gain a solid understanding of how to integrate and use these APIs in your own projects. Happy coding!
