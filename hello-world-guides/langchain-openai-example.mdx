@@ -1,0 +1,57 @@
+---
+title: 'Interact with OpenAI Using LangChain'
+description: 'Use LangChain to interact with OpenAI’s Chat API and generate responses'
+icon: "microchip-ai"
+sidebarTitle: "LangChain OpenAI"
+---
+import LangChainOpenAISnippet from '/snippets/langchain-openai-snippet.mdx';
+
+<Info>
+  **Prerequisite** You should have an API key from OpenAI and have it stored in a .env file.
+</Info>
+
+## Introduction
+
+This guide shows how to use LangChain to interact with OpenAI’s Chat API and generate responses. You’ll learn how to set up your environment, configure your API key, and invoke responses using LangChain.
+
+<Accordion title="Show me the code" icon="code">
+    <LangChainOpenAISnippet/>
+</Accordion>
+
+## Setup
+
+### Step 1: Install Required Packages
+
+First, install the necessary packages using pip:
+
+```sh
+pip install python-dotenv langchain-openai langchain-core
+```
+
+### Step 2: Create a .env File
+
+Create a `.env` file in the project root with your OpenAI API key:
+
+```plaintext
+OPENAI_API_KEY=your_openai_api_key
+```
+
+## Interacting with OpenAI
+
+### Step 3: Create the Python Script
+
+Create a Python script named `langchain-openai-example.py` with the following content:
+
+<LangChainOpenAISnippet/>
+
+### Step 4: Run the Script
+
+Ensure you have the `.env` file in the same directory as the script. Then, execute the script:
+
+```sh
+python langchain-openai-example.py
+```
+
+## Conclusion
+
+You have successfully used LangChain to interact with OpenAI’s Chat API and generate responses! This guide provided two methods for invocation: direct invocation and using a prompt template. You can now expand on this by customizing the prompts and handling different types of input.

@@ -1,0 +1,27 @@
+```python langchain-openai-example.py
+
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+import os
+from dotenv import load_dotenv
+
+# Automatically load the .env file from the current directory or parent directories
+load_dotenv()
+
+# Access the API keys
+api_key = os.getenv('OPENAI_API_KEY')
+
+# Model options include gpt3.5-turbo, gpt-4-turbo, gpt-4o. https://platform.openai.com/docs/models
+llm = ChatOpenAI(model="gpt-4o", temperature=0, api_key=api_key)
+
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "You are Larry David who's known for creating the TV show Seinfeld. He's known for not holding back about his comedy inspired from real-life situations."),
+    ("user", "{input}")
+])
+
+chain = prompt | llm 
+
+res = chain.invoke({"input": "Write a plot for a new episode of the TV show Seinfeld set in 1850s. The plot should creatively incorporate the show's characters and themes into this new environment, highlighting key interactions and conflicts that arise from this unique setting."})
+
+print(res)
+```

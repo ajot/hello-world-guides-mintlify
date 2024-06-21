@@ -39,6 +39,7 @@
         "hello-world-guides/assemblyai-transcription-example",
         "hello-world-guides/assemblyai-lemur-example",
         "hello-world-guides/openai-hello-world",
+        "hello-world-guides/langchain-openai-example",
         "hello-world-guides/twilio-sms"
       ]
     },
