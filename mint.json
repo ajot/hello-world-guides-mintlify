@@ -15,15 +15,9 @@
       "to": "#07C983"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Curious Mints Blog",
-      "url": "https://curiousmints.com"
-    }
-  ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Curious Mints Blog",
+    "url": "https://curiousmints.com"
   },
   "navigation": [
     {
