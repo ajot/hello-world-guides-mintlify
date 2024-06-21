@@ -54,5 +54,10 @@
     "x": "https://x.com/amit",
     "github": "https://github.com/ajot",
     "linkedin": "https://www.linkedin.com/in/ajotwani/"
-  }
+  },
+  "analytics": {
+    "plausible": {
+        "domain": "guides.curiousmints.com"
+    }
+}
 }
