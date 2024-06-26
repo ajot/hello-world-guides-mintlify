@@ -1,0 +1,38 @@
+```python transcribe-mp3-streamlit-snippet.mdx
+import streamlit as st
+import assemblyai as aai
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get API key from environment variables
+ASSEMBLYAI_API_KEY = os.getenv('ASSEMBLYAI_API_KEY')
+aai.settings.api_key = ASSEMBLYAI_API_KEY
+
+def transcribe_audio(audio_url):
+    # Create a Transcriber object
+    transcriber = aai.Transcriber()
+
+    # Transcribe the audio file from the URL
+    transcript = transcriber.transcribe(audio_url)
+    
+    paragraphs = transcript.get_paragraphs()
+    return paragraphs
+
+st.title('MP3 Transcription using AssemblyAI')
+
+# MP3 URL Input
+mp3_url = st.text_input('Enter MP3 URL')
+
+if st.button('Transcribe'):
+    if not mp3_url:
+        st.error('Please enter a valid MP3 URL.')
+    else:
+        with st.spinner('Transcribing...'):
+            # Transcribe the audio file using the URL
+            paragraphs = transcribe_audio(mp3_url)
+            for paragraph in paragraphs:
+                st.write(paragraph.text)
+```

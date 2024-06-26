@@ -1,0 +1,56 @@
+---
+title: 'Transcribe MP3 Audio Using AssemblyAI with Streamlit'
+description: 'Set up a Streamlit app to transcribe MP3 audio files using AssemblyAI'
+icon: "microphone"
+sidebarTitle: "Transcribe MP3 with Streamlit"
+---
+
+import TranscribeMP3StreamlitSnippet from '/snippets/transcribe-mp3-streamlit-snippet.mdx';
+
+<Info>
+  **Prerequisite** You should have an API key from AssemblyAI and have it stored in a .env file.
+</Info>
+
+## Introduction
+
+This guide demonstrates how to set up a Streamlit app to transcribe MP3 audio files using AssemblyAI. You’ll learn how to set up your environment, configure your API key, and create a simple app to transcribe audio from a given URL.
+
+<Accordion title="Show me the code" icon="code">
+    <TranscribeMP3StreamlitSnippet/>
+</Accordion>
+
+## Setup
+
+### Step 1: Install Required Packages
+
+First, install the necessary packages using pip:
+
+```sh
+pip install streamlit assemblyai python-dotenv
+```
+
+### Step 2: Create a .env File
+
+Create a `.env` file in the project root with your AssemblyAI API key:
+
+```plaintext
+ASSEMBLY_AI_API_KEY=your_assemblyai_api_key
+```
+
+### Step 3: Create the Python Script
+
+Create a Python script named `main.py` with the following content:
+
+<TranscribeMP3StreamlitSnippet/>
+
+### Step 4: Run the Streamlit App
+
+Ensure you have the `.env` file in the same directory as the script. Then, execute the Streamlit app:
+
+```sh
+streamlit run main.py
+```
+
+## Conclusion
+
+You have successfully set up a Streamlit app to transcribe MP3 audio files using AssemblyAI! This guide provided a basic example to get you started. You can now expand on this by customizing the transcription process and enhancing the app's functionality.
