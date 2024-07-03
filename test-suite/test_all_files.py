@@ -18,6 +18,10 @@ print(f"Database path: {DB_PATH}")  # Debug print statement
 
 # Initialize the database
 def init_db():
+    """
+    Initialize the SQLite database to store test results.
+    Creates a table if it doesn't exist.
+    """
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS test_results
@@ -32,6 +36,10 @@ init_db()
 
 # Helper function to execute a code string and capture output
 def exec_code_string(code_string):
+    """
+    Execute a given code string and capture its output.
+    Returns local variables and the captured output.
+    """
     local_vars = {}
     globals_dict = {
         "os": os,
@@ -57,6 +65,9 @@ def exec_code_string(code_string):
 
 # Helper function to extract code from .mdx file
 def extract_code_from_mdx(file_path):
+    """
+    Extract and return Python code blocks from an MDX file.
+    """
     code_lines = []
     in_code_block = False
     with open(file_path, 'r') as file:
@@ -71,6 +82,9 @@ def extract_code_from_mdx(file_path):
 
 # Helper functions for database operations
 def get_last_test_status(file_name):
+    """
+    Retrieve the last test status for a given file from the database.
+    """
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     c.execute("SELECT last_run, status, force_run FROM test_results WHERE file_name = ?", (file_name,))
@@ -79,6 +93,9 @@ def get_last_test_status(file_name):
     return row
 
 def update_test_status(file_name, status):
+    """
+    Update the test status for a given file in the database.
+    """
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     now = datetime.now()
@@ -89,6 +106,9 @@ def update_test_status(file_name, status):
 
 # Check if the test should be run based on the last run time and status
 def should_run_test(file_name):
+    """
+    Determine if a test should be run based on its last run time and status.
+    """
     status = get_last_test_status(file_name)
     if status:
         last_run, test_status, force_run = status
@@ -104,17 +124,27 @@ SNIPPETS_DIR = os.path.join(os.path.dirname(__file__), "..", "snippets")
 
 # Helper function to get the list of snippet files
 def get_snippet_files():
+    """
+    Retrieve a list of all MDX snippet files in the snippets directory.
+    """
     files = glob.glob(os.path.join(SNIPPETS_DIR, "*.mdx"))
     print(f"Discovered snippet files: {files}")  # Debug print statement
     return files
 
 # Logging function to print the test being conducted
 def log_test_start(test_name):
+    """
+    Log the start of a test.
+    """
     print(f"\nRunning test: {test_name}\n" + "="*40)
 
 # Parameterized test function
 @pytest.mark.parametrize("snippet_file", get_snippet_files())
 def test_snippet(snippet_file):
+    """
+    Run a test for a given snippet file.
+    Extracts and executes the code, then updates the test status in the database.
+    """
     log_test_start(snippet_file)
     file_name = os.path.basename(snippet_file)
     if not should_run_test(file_name):
