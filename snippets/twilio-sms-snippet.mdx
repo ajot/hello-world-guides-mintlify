@@ -1,0 +1,30 @@
+```python twilio-sms-example.py
+import os
+from dotenv import load_dotenv
+from twilio.rest import Client
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get Twilio credentials and phone numbers from environment variables
+account_sid = os.getenv('TWILIO_ACCOUNT_SID')
+auth_token = os.getenv('TWILIO_AUTH_TOKEN')
+phone_from = os.getenv('TWILIO_PHONE_FROM')
+phone_to = os.getenv('TWILIO_PHONE_TO')
+
+# Initialize Twilio client with account SID and auth token
+client = Client(account_sid, auth_token)
+
+try:
+    # Send a text message using Twilio API
+    message = client.messages.create(
+        body="Hello, World!",
+        from_=phone_from,
+        to=phone_to
+    )
+    # Print success response
+    print(f"Message sent to {phone_to}. SID: {message.sid}")
+except Exception as e:
+    # Print error response
+    print(f"Failed to send message. Error: {e}")
+```
