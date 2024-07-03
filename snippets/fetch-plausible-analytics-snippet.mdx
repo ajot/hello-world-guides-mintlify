@@ -23,7 +23,7 @@ url = "https://plausible.io/api/v1/stats/aggregate"
 
 # Calculate the date range for the last 3 days
 end_date = datetime.now().strftime('%Y-%m-%d')
-start_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')  # 2 days before today to include 3 days
+start_date = (datetime.now() - timedelta(days=2)).strftime('%Y-%m-%d')  # 2 days before today to include 3 days
 
 # Parameters for the API request
 params = {
