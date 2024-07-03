@@ -2,13 +2,9 @@
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
-from logging_config import setup_logging
 
 # Load environment variables from .env file
 load_dotenv()
-
-# Set up logging
-logger = setup_logging()
 
 # Get OpenAI API key from environment variables
 openai_api_key = os.getenv('OPENAI_API_KEY')
@@ -32,9 +28,9 @@ completion = client.chat.completions.create(
     ]
 )
 
-# Log the raw completion response
-logger.info("Raw completion response: %s", completion)
+# Print the raw completion response
+print("Raw completion response:", completion)
 
-# Log the content of the first choice's message
-logger.info("Content of the first choice's message: %s", completion.choices[0].message.content)
+# Print the content of the first choice's message
+print("Content of the first choice's message:", completion.choices[0].message.content)
 ```
