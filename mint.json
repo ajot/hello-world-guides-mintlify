@@ -37,7 +37,8 @@
         "hello-world-guides/langchain-openai-example",
         "hello-world-guides/twilio-sms",
         "hello-world-guides/download-youtube-video-using-pytube",
-        "hello-world-guides/fetch-plausible-analytics"
+        "hello-world-guides/fetch-plausible-analytics",
+        "hello-world-guides/launchdarkly-example"
       ]
     },
     {

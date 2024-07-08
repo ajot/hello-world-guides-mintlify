@@ -1,0 +1,58 @@
+---
+title: 'Evaluate Feature Flag Using LaunchDarkly'
+description: 'Evaluate a feature flag for a user using the LaunchDarkly API'
+icon: 'toggle-on'
+sidebarTitle: "LaunchDarkly Feature Flag"
+---
+
+import LaunchDarklyFeatureFlagSnippet from '/snippets/launchdarkly-feature-flag-snippet.mdx';
+
+<Info>
+  **Prerequisite** You should have a LaunchDarkly account and have created a feature flag called `dark-mode` that allows anyone with `example.com` email address to `true`, and everyone else to `false`. Ensure you have an API key from LaunchDarkly and have it stored in a `.env` file.
+</Info>
+
+## Introduction
+
+This guide demonstrates how to evaluate a feature flag for a user using the LaunchDarkly API. You'll learn how to set up your environment, configure your API key, and evaluate a feature flag.
+
+<Accordion title="Show me the code" icon="code">
+    <LaunchDarklyFeatureFlagSnippet/>
+</Accordion>
+
+## Setup
+
+### Step 1: Install Required Packages
+
+First, install the necessary packages using pip:
+
+```sh
+pip install launchdarkly-server-sdk python-dotenv
+```
+
+### Step 2: Create a .env File
+
+Create a `.env` file in the project root with your LaunchDarkly API key:
+
+```plaintext
+LAUNCHDARKLY_API_KEY=your_launchdarkly_api_key
+```
+
+## Evaluating a Feature Flag
+
+### Step 3: Create the Python Script
+
+Create a Python script named `launchdarkly-feature-flag.py` with the following content:
+
+<LaunchDarklyFeatureFlagSnippet/>
+
+### Step 4: Run the Script
+
+Ensure you have the `.env` file in the same directory as the script. Then, execute the script:
+
+```sh
+python launchdarkly-feature-flag.py
+```
+
+## Conclusion
+
+You have successfully evaluated a feature flag for a user using the LaunchDarkly API! This guide provided a basic example to get you started. You can now expand on this by customizing the feature flag evaluation and handling different user contexts.

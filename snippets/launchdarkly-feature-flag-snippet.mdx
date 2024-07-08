@@ -1,0 +1,34 @@
+```python launchdarkly-feature-flag.py
+import os
+import ldclient
+from ldclient.config import Config
+from ldclient.context import Context
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+def evaluate_flag(sdk_key, feature_flag_key, user_email):
+    # Initialize LaunchDarkly client
+    ldclient.set_config(Config(sdk_key))
+
+    # Specify the user and email to LaunchDarkly as a Context
+    context = Context.builder(user_email).kind('user').set("email", user_email).build()
+
+    # Obtain the feature flag evaluated value
+    flag_value = ldclient.get().variation(feature_flag_key, context, False)
+    
+    # Close the LaunchDarkly client
+    ldclient.get().close()
+    
+    return flag_value
+
+# Example usage
+if __name__ == "__main__":
+    sdk_key = os.getenv("LAUNCHDARKLY_API_KEY")
+    feature_flag_key = "dark-mode"
+    user_email = "hello@example.com"
+
+    flag_status = evaluate_flag(sdk_key, feature_flag_key, user_email)
+    print(f"Feature flag '{feature_flag_key}' for user '{user_email}': {flag_status}")
+```
