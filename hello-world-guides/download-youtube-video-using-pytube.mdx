@@ -1,0 +1,48 @@
+---
+title: 'Download YouTube Videos Using PyTube'
+description: 'Set up a Python script to download YouTube videos using the PyTube library'
+icon: "video"
+sidebarTitle: "Download YouTube Video"
+---
+
+import DownloadYouTubeVideoSnippet from '/snippets/download-youtube-video-snippet.mdx';
+
+<Info>
+  **Prerequisite** You should have Python installed and the PyTube library available.
+</Info>
+
+## Introduction
+
+This guide demonstrates how to set up a Python script to download YouTube videos using the [PyTube](https://pytube.io/en/latest) library. You’ll learn how to install the necessary library, set up your environment, and create a simple script to download videos.
+
+<Accordion title="Show me the code" icon="code">
+    <DownloadYouTubeVideoSnippet/>
+</Accordion>
+
+## Setup
+
+### Step 1: Install Required Package
+
+First, install the necessary package using pip:
+
+```sh
+pip install pytube
+```
+
+### Step 2: Create the Python Script
+
+Create a Python script named `download_youtube_video.py` with the following content:
+
+<DownloadYouTubeVideoSnippet/>
+
+### Step 3: Run the Script
+
+Execute the script and enter a YouTube URL when prompted:
+
+```sh
+python download_youtube_video.py
+```
+
+## Conclusion
+
+You have successfully set up a Python script to download YouTube videos using PyTube! This guide provided a basic example to get you started. You can now expand on this by customizing the download options and handling different scenarios.

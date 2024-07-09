@@ -5,6 +5,8 @@ icon: 'microchip-ai'
 sidebarTitle: "OpenAI Company Info"
 ---
 
+import OpenAIHelloWorldSnippet from '/snippets/openai-hello-world-snippet.mdx';
+
 <Info>
   **Prerequisite** You should have an API key from OpenAI and have it stored in a .env file.
 </Info>
@@ -12,6 +14,10 @@ sidebarTitle: "OpenAI Company Info"
 ## Introduction
 
 This guide demonstrates how to fetch and log company information using the OpenAI API. You'll learn how to set up your environment, configure your API key, and make a request to the OpenAI API.
+
+<Accordion title="Show me the code" icon="code">
+    <OpenAIHelloWorldSnippet/>
+</Accordion>
 
 ## Setup
 
@@ -37,46 +43,7 @@ OPENAI_API_KEY=your_openai_api_key
 
 Create a Python script named `openai-hello-world.py` with the following content:
 
-```python openai-hello-world.py
-import os
-from dotenv import load_dotenv
-from openai import OpenAI
-from logging_config import setup_logging
-
-# Load environment variables from .env file
-load_dotenv()
-
-# Set up logging
-logger = setup_logging()
-
-# Get OpenAI API key from environment variables
-openai_api_key = os.getenv('OPENAI_API_KEY')
-
-# Initialize OpenAI client with API key
-client = OpenAI(api_key=openai_api_key)
-
-# Define the company name to get information for
-company_name = "Twilio"
-
-# Request completion from the OpenAI API
-completion = client.chat.completions.create(
-    model="gpt-4-turbo",
-    messages=[
-        {"role": "system", "content": "Only return the information asked for. No preamble, and no conclusion. Only return CSV format."},
-        {"role": "user", "content": (
-            f"Return the details for the company in JSON format including founding date, status "
-            f"(series a, b funding etc., IPO etc.), a brief description of what {company_name} does, "
-            f"and its category in JSON format. Use these keys - company, year, description, stage, category"
-        )}
-    ]
-)
-
-# Log the raw completion response
-logger.info("Raw completion response: %s", completion)
-
-# Log the content of the first choice's message
-logger.info("Content of the first choice's message: %s", completion.choices[0].message.content)
-```
+<OpenAIHelloWorldSnippet/>
 
 ### Step 4: Run the Script
 

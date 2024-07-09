@@ -1,0 +1,48 @@
+```python fetch_plausible_analytics.py
+import requests
+import json
+import os
+from dotenv import load_dotenv
+from datetime import datetime, timedelta
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access the API key from environment variables
+plausible_api_key = os.getenv('PLAUSIBLE_API_KEY')
+
+# Replace with your actual site ID
+SITE_ID = 'guides.curiousmints.com'
+
+# Check if the API key is available
+if not plausible_api_key:
+    raise ValueError("Plausible API key not found in the environment variables.")
+
+# Define the Plausible API endpoint and parameters
+url = "https://plausible.io/api/v1/stats/aggregate"
+
+# Calculate the date range for the last 3 days
+end_date = datetime.now().strftime('%Y-%m-%d')
+start_date = (datetime.now() - timedelta(days=2)).strftime('%Y-%m-%d')  # 2 days before today to include 3 days
+
+# Parameters for the API request
+params = {
+    'site_id': SITE_ID,
+    'period': 'custom',
+    'date': f'{start_date},{end_date}',
+    'metrics': 'visitors,pageviews,bounce_rate,visit_duration'
+}
+headers = {
+    'Authorization': f'Bearer {plausible_api_key}'
+}
+
+# Make the API request
+response = requests.get(url, headers=headers, params=params)
+
+# Check if the request was successful
+if response.status_code == 200:
+    data = response.json()
+    print(json.dumps(data, indent=4))  # Pretty print the JSON response
+else:
+    print(f"Error: {response.status_code} - {response.text}")
+```

@@ -5,6 +5,8 @@ icon: "microphone"
 sidebarTitle: "AssemblyAI Transcription"
 ---
 
+import AssemblyAITranscriptionSnippet from '/snippets/assemblyai-transcription-example-snippet.mdx';
+
 <Info>
   **Prerequisite** You should have an API key from AssemblyAI and have it stored in a .env file.
 </Info>
@@ -12,6 +14,10 @@ sidebarTitle: "AssemblyAI Transcription"
 ## Introduction
 
 This guide demonstrates how to transcribe an audio file using the AssemblyAI API. You'll learn how to set up your environment, configure your API key, and transcribe an audio file.
+
+<Accordion title="Show me the code" icon="code">
+    <AssemblyAITranscriptionSnippet/>
+</Accordion>
 
 ## Setup
 
@@ -37,39 +43,7 @@ ASSEMBLYAI_API_KEY=your_assemblyai_api_key
 
 Create a Python script named `assemblyai-transcription.py` with the following content:
 
-```python assemblyai-transcription.py
-import os
-from dotenv import load_dotenv
-import assemblyai as aai
-
-# Load environment variables from .env file
-load_dotenv()
-
-# Get AssemblyAI API key from environment variables
-aai.settings.api_key = os.getenv('ASSEMBLYAI_API_KEY')
-
-# Initialize the transcriber
-transcriber = aai.Transcriber()
-
-# Define the audio URL
-audio_url = (
-    "https://cdn.simplecast.com/audio/3fa5a74f-0522-4a05-a00e-d880fe923dac/episodes/6eb635c7-2622-4902-a268-8d41a258c9c8/audio/d70e31a6-19d5-4ad7-ba83-3aee66923b88/default_tc.mp3"
-)
-
-# Set the transcription configuration
-config = aai.TranscriptionConfig(speaker_labels=True)
-
-# Transcribe the audio file
-transcript = transcriber.transcribe(audio_url, config)
-
-# Print the transcription text and ID
-print(transcript.text)
-print(transcript.id)
-
-# Print the speaker labels and their corresponding text
-for utterance in transcript.utterances:
-    print(f"Speaker {utterance.speaker}: {utterance.text}")
-```
+<AssemblyAITranscriptionSnippet/>
 
 ### Step 4: Run the Script
 

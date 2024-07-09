@@ -36,6 +36,9 @@
         "hello-world-guides/openai-hello-world",
         "hello-world-guides/langchain-openai-example",
         "hello-world-guides/twilio-sms",
+        "hello-world-guides/download-youtube-video-using-pytube",
+        "hello-world-guides/fetch-plausible-analytics",
+        "hello-world-guides/launchdarkly-example",
         "hello-world-guides/hookdeck-localhost-webhooks"
       ]
     },
@@ -46,6 +49,13 @@
       ]
     }
   ],
+  "anchors": [
+    {
+        "name": "Changelog",
+        "icon": "code",
+        "url": "https://github.com/ajot/hello-world-guides-mintlify/commits/main/"
+    }
+],
   "footerSocials": {
     "x": "https://x.com/amit",
     "github": "https://github.com/ajot",

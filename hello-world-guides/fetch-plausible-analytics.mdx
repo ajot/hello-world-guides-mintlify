@@ -1,0 +1,56 @@
+---
+title: 'Fetch Website Analytics Using Plausible API'
+description: 'Set up a Python script to fetch website analytics data from Plausible Analytics using the Plausible API'
+icon: "chart-simple"
+sidebarTitle: "Fetch Plausible Analytics"
+---
+
+import FetchPlausibleAnalyticsSnippet from '/snippets/fetch-plausible-analytics-snippet.mdx';
+
+<Info>
+  **Prerequisite** You should have an API key from Plausible Analytics and have it stored in a .env file.
+</Info>
+
+## Introduction
+
+This guide demonstrates how to set up a Python script to fetch website analytics data from Plausible Analytics using the Plausible API. You’ll learn how to install the necessary library, set up your environment, and create a simple script to fetch and display analytics data.
+
+<Accordion title="Show me the code" icon="code">
+    <FetchPlausibleAnalyticsSnippet/>
+</Accordion>
+
+## Setup
+
+### Step 1: Install Required Packages
+
+First, install the necessary packages using pip:
+
+```sh
+pip install requests python-dotenv
+```
+
+### Step 2: Create a .env File
+
+Create a `.env` file in the project root with your Plausible API key:
+
+```plaintext
+PLAUSIBLE_API_KEY=your_plausible_api_key
+```
+
+### Step 3: Create the Python Script
+
+Create a Python script named `fetch_plausible_analytics.py` with the following content:
+
+<FetchPlausibleAnalyticsSnippet/>
+
+### Step 4: Run the Script
+
+Ensure you have the `.env` file in the same directory as the script. Then, execute the script:
+
+```sh
+python fetch_plausible_analytics.py
+```
+
+## Conclusion
+
+You have successfully set up a Python script to fetch website analytics data from Plausible Analytics using the Plausible API! This guide provided a basic example to get you started. You can now expand on this by customizing the data parameters and handling different scenarios.

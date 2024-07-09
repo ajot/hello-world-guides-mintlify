@@ -1,0 +1,10 @@
+pytest
+python-dotenv
+requests
+streamlit
+assemblyai
+resend
+pytube
+moviepy
+langchain_openai
+twilio

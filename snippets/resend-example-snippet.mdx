@@ -23,9 +23,11 @@ try:
         "subject": subject,
         "html": email_body
     })
-    # Print success response
+    # Print and return the response
     print(f"Email sent to {email_to}. Response: {response}")
+    response
 except Exception as e:
-    # Print error response
+    # Print and return the error message
     print(f"Failed to send email. Error: {e}")
+    {"status": "error", "message": str(e)}
 ```
