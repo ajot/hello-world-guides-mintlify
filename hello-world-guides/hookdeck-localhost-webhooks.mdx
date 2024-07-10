@@ -7,7 +7,7 @@ sidebarTitle: "Hookdeck CLI Localhost Webhooks"
 
 ## Introduction
 
-This guide demonstrates how to recieve a webhook from services such as Resend, Twilio, Shopify and Stripe on your localhost using the Hookdeck CLI. You'll learn how to set up your environment, run the Hookdeck CLI, receive webhooks, and replay webhooks from the Hookdeck Console to test you code during development.
+This guide demonstrates how to receive a webhook from services such as Resend, Twilio, Shopify, and Stripe on your localhost development environment using the Hookdeck CLI. You'll learn how to set up your environment, run the Hookdeck CLI, receive webhooks, and replay webhooks from the Hookdeck Console to test your code during development.
 
 ## Setup
 
@@ -110,7 +110,7 @@ localhost forwarding to /webhook
 
 ### Step 4: Trigger a test webhook
 
-Open the the **Console URL** from your terminal in your browser.
+Open the **Console URL** from your terminal in your browser.
 
 Choose a **Sample Webhook Provider** from the list of **Example Webhooks**. For example, **Stripe**.
 
@@ -156,9 +156,9 @@ Copy the **Event URL** from the Hookdeck CLI output. The same URL can also be fo
 
 ![Copy Hookdeck Event URL](../images/hookdeck-hello-world/hookdeck-console-webhook-url.png)
 
-Go to your the API provider platform such as Resend, Twilio, Shopify or Stripe and register the  as the webhook URL with the provider.
+Go to the API provider platform, such as Resend, Twilio, Shopify, or Stripe, and register the Hookdeck URL as the webhook URL with the provider.
 
-Trigger a webhook from your chosen API provider and you will see it appear in the Hookdeck console.
+Trigger a webhook from your chosen API provider, and you will see it appear in the Hookdeck console.
 
 ![Inbound webhook from Vonage SMS API handled in the Hookdeck Console](../images/hookdeck-hello-world/trigger-inspect-webhook.gif)
 
@@ -198,7 +198,7 @@ INFO:werkzeug:127.0.0.1 - - [09/Jul/2024 19:45:57] "POST /webhook HTTP/1.1" 200 
 
 ## Conclusion
 
-You have successfully received a webhook on your localhost using the Hookdeck CLI! You also inspected the webhook payload and server response, and replayed a webhook using the Hookdeck console.
+You have successfully received a webhook on your localhost development environment using the Hookdeck CLI! You also inspected the webhook payload and server response and replayed a webhook using the Hookdeck console.
 
 This guide provided a basic example to get you started. You can now expand on this by [creating a Hookdeck account](https://dashboard.hookdeck.com/signup?ref=curious-mints), trying features such as [transformations](https://hookdeck.com/docs/transformations?ref=curious-mints), and [filtering](https://hookdeck.com/docs/transformations?ref=curious-mints), benefitting from functionality like [configurable retries](https://hookdeck.com/docs/retries?ref=curious-mints), and generally using Hookdeck as your reliable inbound webhook infrastructure.
 
