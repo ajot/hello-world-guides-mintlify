@@ -48,6 +48,7 @@ import json
 import logging
 from flask import Flask, request
 
+# Configure logging to output to the console
 logging.basicConfig(
     level=logging.INFO,
     handlers=[logging.StreamHandler()]
@@ -56,19 +57,21 @@ logging.basicConfig(
 app = Flask(__name__)
 app.logger.setLevel(logging.INFO)
 
-
-@app.route("/<path:path>", methods=["POST"])
-def handle(path):
+# Define a route to handle POST requests sent to /webhook
+@app.route("/webhook", methods=["POST"])
+def handle_hello_webhook():
+    # Log the received webhook with the current timestamp and JSON payload
     app.logger.info("webhook_received %s %s",
                     datetime.now().isoformat(),
                     json.dumps(request.json, indent=2))
 
+    # Respond with a status of ACCEPTED
     return {
         "status": "ACCEPTED"
     }
 
-
 if __name__ == "__main__":
+    # Run the Flask app on port 3030 in debug mode
     app.run(debug=True, port=3030)
 ```
 
@@ -83,12 +86,12 @@ python server.py
 In a new terminal window the following command to create a localtunnel:
 
 ```sh
-hookdeck listen 3030 inbound-webhook
+hookdeck listen 3030 my-webhook
 ```
 
-When prompted with `What path should the events be forwarded to (ie: /webhooks)?`, enter `/webhook` and press **Enter**.
+When prompted with `What path should the events be forwarded to (ie: /webhooks)?`, enter `/webhook` and press **Enter**. This is the base path for all requests sent to the localtunnel.
 
-When prompted with `What's your connection label (ie: My API)?`, enter `localhost` and press **Enter**.
+When prompted with `What's your connection label (ie: My API)?`, enter `My API` and press **Enter**.
 
 The output will look similar to the following:
 
@@ -97,7 +100,7 @@ Dashboard
 👤 Console URL: https://api.hookdeck.com/signin/guest?token={token}
 Sign up in the Console to make your webhook URL permanent.
 
-inbound-webhook Source
+my-webhook Source
 🔌 Event URL: https://hkdk.events/{id}
 
 Connections
@@ -108,7 +111,47 @@ localhost forwarding to /webhook
 
 ## Trigger a webhook
 
-### Step 4: Trigger a test webhook
+### Step 4: Trigger a test webhook with a cURL command
+
+Run the following cURL command to act as an inbound webhook, replacing the URL with the **Event URL** from the Hookdeck CLI output:
+
+```sh
+curl -X POST https://hkdk.events/cnzpo680rdhejk \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Hello, World!"}'
+```
+
+Note that the `/webhook` path is not required in the URL.
+
+The cURL command output will be similar to the following:
+
+```sh
+{"status":"SUCCESS","message":"Request handled by Hookdeck. Check your dashboard to inspect the request: https://dashboard.hookdeck.com/requests/req_[id]","request_id":"req_[id]"}%
+```
+
+You will see the terminal running the Hookdeck CLI log the inbound webhook:
+
+```sh
+2024-07-09 19:06:46 [200] POST http://localhost:3030/webhook | https://console.hookdeck.com/?event_id={id}
+```
+
+You will also see the Python server log the inbound webhook:
+
+```sh
+INFO:server:webhook_received 2024-07-09T19:06:46.043305 {
+  "id": "evt_1MhUT7E0b6fckueStwy86nfu",
+  "object": "event",
+  "api_version": "2022-11-15",
+  "created": 1677833999,
+  "data": {
+    ...
+  },
+  "type": "invoice.created"
+}
+INFO:werkzeug:127.0.0.1 - - [09/Jul/2024 19:06:46] "POST /webhook HTTP/1.1" 200 -
+```
+
+### Step 5: Trigger a test webhook from the Hookdeck Console
 
 Open the **Console URL** from your terminal in your browser.
 
@@ -144,13 +187,13 @@ INFO:server:webhook_received 2024-07-09T19:06:46.043305 {
 INFO:werkzeug:127.0.0.1 - - [09/Jul/2024 19:06:46] "POST /webhook HTTP/1.1" 200 -
 ```
 
-### Step 5: Replay the webhook
+### Step 6: Replay the webhook
 
 From the Hookdeck Console, click the **Resend to destination** button to replay the webhook.
 
 ![Replay Webhook](../images/hookdeck-hello-world/replay-webhook.gif)
 
-### Step 6: Trigger and receive a webhook from an API platform
+### Step 7: Trigger and receive a webhook from an API platform
 
 Copy the **Event URL** from the Hookdeck CLI output. The same URL can also be found in the Hookdeck Console.
 
