@@ -83,7 +83,7 @@ python server.py
 
 ### Step 3: Create a localtunnel with the Hookdeck CLI
 
-In a new terminal window the following command to create a localtunnel:
+In a new terminal window, run the following command to create a localtunnel:
 
 ```sh
 hookdeck listen 3030 my-webhook
@@ -139,14 +139,7 @@ You will also see the Python server log the inbound webhook:
 
 ```sh
 INFO:server:webhook_received 2024-07-09T19:06:46.043305 {
-  "id": "evt_1MhUT7E0b6fckueStwy86nfu",
-  "object": "event",
-  "api_version": "2022-11-15",
-  "created": 1677833999,
-  "data": {
-    ...
-  },
-  "type": "invoice.created"
+  "message": "Hello, World!"
 }
 INFO:werkzeug:127.0.0.1 - - [09/Jul/2024 19:06:46] "POST /webhook HTTP/1.1" 200 -
 ```
@@ -203,7 +196,7 @@ Go to the API provider platform, such as Resend, Twilio, Shopify, or Stripe, and
 
 Trigger a webhook from your chosen API provider, and you will see a log entry appear in the Hookdeck console.
 
-![Inbound webhook from Vonage SMS API handled in the Hookdeck Console](../images/hookdeck-hello-world/trigger-inspect-webhook.gif)
+![Inbound webhook from Vonage SMS API handled in the Hookdeck Console](../images/hookdeck-hello-world/vonage-inbound-webhook.gif)
 
 Additionally, you will see the webhook logged in the Hookdeck CLI:
 
