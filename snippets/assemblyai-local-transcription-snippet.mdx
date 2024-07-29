@@ -1,0 +1,38 @@
+```python assemblyai-local-transcription.py
+import os
+from dotenv import load_dotenv
+import assemblyai as aai
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get AssemblyAI API key from environment variables
+aai.settings.api_key = os.getenv('ASSEMBLYAI_API_KEY')
+
+# Initialize the transcriber
+transcriber = aai.Transcriber()
+
+# Define the local audio file path
+local_audio_file_path = "downloads/voice.m4a"  # Ensure this path is correct and the file exists
+
+# Set the transcription configuration
+config = aai.TranscriptionConfig(speaker_labels=True)
+
+try:
+    # Transcribe the local audio file
+    transcript = transcriber.transcribe(local_audio_file_path, config)
+
+    # Print the transcription text and ID
+    print(transcript.text)
+    print(transcript.id)
+
+    # Print the speaker labels and their corresponding text
+    for utterance in transcript.utterances:
+        print(f"Speaker {utterance.speaker}: {utterance.text}")
+
+except FileNotFoundError as e:
+    print(f"File not found: {e.filename}")
+
+except Exception as e:
+    print(f"An error occurred: {str(e)}")
+```

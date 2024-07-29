@@ -1,0 +1,58 @@
+---
+title: 'AssemblyAI Transcription - Local File'
+description: 'Transcribe Local Audio Files Using the AssemblyAI API'
+icon: "microphone"
+sidebarTitle: "AssemblyAI Local Transcription"
+---
+
+import AssemblyAILocalTranscriptionSnippet from '/snippets/assemblyai-local-transcription-snippet.mdx';
+
+<Info>
+  **Prerequisite** You should have an API key from AssemblyAI and have it stored in a .env file.
+</Info>
+
+## Introduction
+
+This guide demonstrates how to transcribe a local audio file using the AssemblyAI API. You'll learn how to set up your environment, configure your API key, and transcribe an audio file stored on your local machine.
+
+<Accordion title="Show me the code" icon="code">
+    <AssemblyAILocalTranscriptionSnippet/>
+</Accordion>
+
+## Setup
+
+### Step 1: Install Required Packages
+
+First, install the necessary packages using pip:
+
+```sh
+pip install python-dotenv assemblyai
+```
+
+### Step 2: Create a .env File
+
+Create a `.env` file in the project root with your AssemblyAI API key:
+
+```plaintext
+ASSEMBLYAI_API_KEY=your_assemblyai_api_key
+```
+
+## Transcribing a Local Audio File
+
+### Step 3: Create the Python Script
+
+Create a Python script named `assemblyai-local-transcription.py` with the following content:
+
+<AssemblyAILocalTranscriptionSnippet/>
+
+### Step 4: Run the Script
+
+Ensure you have the `.env` file in the same directory as the script. Then, execute the script:
+
+```sh
+python assemblyai-local-transcription.py
+```
+
+## Conclusion
+
+You have successfully transcribed a local audio file using the AssemblyAI API! This guide provided a basic example to get you started. You can now expand on this by customizing the transcription configuration and handling different audio files stored locally.

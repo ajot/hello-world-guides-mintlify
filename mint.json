@@ -31,6 +31,7 @@
       "pages": [
         "hello-world-guides/resend-hello-world",
         "hello-world-guides/assemblyai-transcription-example",
+        "hello-world-guides/assemblyai-transcription-example-local-file",
         "hello-world-guides/assemblyai-lemur-example",
         "hello-world-guides/transcribe-mp3-using-streamlit",
         "hello-world-guides/openai-hello-world",
