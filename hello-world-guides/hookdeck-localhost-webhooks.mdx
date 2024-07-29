@@ -89,10 +89,6 @@ In a new terminal window, run the following command to create a localtunnel:
 hookdeck listen 3030 my-webhook
 ```
 
-When prompted with `What path should the events be forwarded to (ie: /webhooks)?`, enter `/webhook` and press **Enter**. This is the base path for all requests sent to the localtunnel.
-
-When prompted with `What's your connection label (ie: My API)?`, enter `My API` and press **Enter**.
-
 The output will look similar to the following:
 
 ```sh
@@ -104,7 +100,7 @@ my-webhook Source
 🔌 Event URL: https://hkdk.events/{id}
 
 Connections
-localhost forwarding to /webhook
+my-webhook -> cli forwarding to /
 
 > Ready! (^C to quit)
 ```
@@ -113,15 +109,13 @@ localhost forwarding to /webhook
 
 ### Step 4: Trigger a test webhook with a cURL command
 
-Run the following cURL command to act as an inbound webhook, replacing the URL with the **Event URL** from the Hookdeck CLI output:
+Run the following cURL command to act as an inbound webhook, replacing the `{URL}` with the **Event URL** from the Hookdeck CLI output:
 
 ```sh
-curl -X POST https://hkdk.events/cnzpo680rdhejk \
+curl -X POST {URL}/webhook \
   -H "Content-Type: application/json" \
   -d '{"message": "Hello, World!"}'
 ```
-
-Note that the `/webhook` path is not required in the URL.
 
 The cURL command output will be similar to the following:
 
