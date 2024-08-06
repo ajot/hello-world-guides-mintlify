@@ -1,0 +1,29 @@
+```python fetch_airtable_data.py
+import os
+from dotenv import load_dotenv
+from pyairtable import Api
+from pyairtable.formulas import match
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get Airtable API key and base ID from environment variables
+airtable_api_key = os.getenv('AIRTABLE_API_KEY')
+airtable_base_id = os.getenv('AIRTABLE_BASE_ID')
+airtable_table_name = os.getenv('AIRTABLE_TABLE_NAME')
+
+# Initialize the Airtable API and table
+api = Api(airtable_api_key)
+table = api.table(airtable_base_id, airtable_table_name)
+
+# Define the formula to match records (optional)
+# Example formula to filter records where the "Name" field is "John Doe"
+formula = match({"Name": "John Doe"})  # Modify as needed or set to None if no filtering is required
+
+# Fetch all records, applying the formula if it exists
+records = table.all(formula=formula)
+
+# Print the retrieved records
+for record in records:
+    print(record)
+```

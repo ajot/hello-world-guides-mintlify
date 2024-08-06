@@ -29,6 +29,7 @@
     {
       "group": "Hello World Guides",
       "pages": [
+        "hello-world-guides/airtable-get-data",
         "hello-world-guides/resend-hello-world",
         "hello-world-guides/assemblyai-transcription-example",
         "hello-world-guides/assemblyai-transcription-example-local-file",
@@ -41,6 +42,12 @@
         "hello-world-guides/fetch-plausible-analytics",
         "hello-world-guides/launchdarkly-example",
         "hello-world-guides/hookdeck-localhost-webhooks"
+      ]
+    },
+    {
+      "group": "Talk Guides",
+      "pages": [
+        "talk-guides/1-bad"
       ]
     },
     {

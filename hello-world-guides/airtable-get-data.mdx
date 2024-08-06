@@ -1,0 +1,62 @@
+---
+title: 'Fetch Data from Airtable Using pyairtable'
+description: 'Learn how to retrieve data from Airtable using the pyairtable library'
+icon: 'database'
+sidebarTitle: 'Fetch Airtable Data'
+---
+
+import FetchAirtableDataSnippet from '/snippets/airtable-get-data-snippet.mdx';
+
+<Info>
+  **Prerequisite** You should have an API key from Airtable and have it stored in a .env file.
+</Info>
+
+## Introduction
+
+This guide demonstrates how to fetch data from an Airtable table using the `pyairtable` library in Python. `pyairtable` makes it super easy to interact with Airtable. You'll learn how to set up your environment, configure your API key, and query records from an Airtable table. You can find more details in the [pyairtable documentation](https://pyairtable.readthedocs.io).
+
+<Accordion title="Show me the code" icon="code">
+    <FetchAirtableDataSnippet/>
+</Accordion>
+
+## Setup
+
+### Step 1: Install Required Packages
+
+First, install the necessary packages using pip:
+
+```sh
+pip install pyairtable python-dotenv
+```
+
+### Step 2: Create a .env File
+
+Create a `.env` file in the project root with your Airtable API key and base ID:
+
+```plaintext
+AIRTABLE_API_KEY=your_airtable_api_key
+AIRTABLE_BASE_ID=your_airtable_base_id
+AIRTABLE_TABLE_NAME=your_airtable_table_name
+```
+
+You can get your Airtable personal access token from [Airtable Personal Access Tokens](https://airtable.com/create/tokens). Personal access tokens are used to authenticate requests to Airtable's API. You can learn more about them at [Airtable Developer Documentation](https://airtable.com/developers/web/guides/personal-access-tokens).
+
+## Fetching Data from Airtable
+
+### Step 3: Create the Python Script
+
+Create a Python script named `fetch_airtable_data.py` with the following content:
+
+<FetchAirtableDataSnippet/>
+
+### Step 4: Run the Script
+
+Ensure you have the `.env` file in the same directory as the script. Then, execute the script:
+
+```sh
+python fetch_airtable_data.py
+```
+
+## Conclusion
+
+You have successfully retrieved data from an Airtable table using the `pyairtable` library with the new `Api.table()` method! This guide provided a basic example to get you started. You can now expand on this by customizing the queries and handling different tables and fields in your Airtable base.
